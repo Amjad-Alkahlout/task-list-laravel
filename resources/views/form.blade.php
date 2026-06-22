@@ -20,7 +20,7 @@
             <label for="title">
                 Title
             </label>
-            <input type="text" name="title" id="title" value="{{ old( $task->title ??'title') }}">
+            <input type="text" name="title" id="title" value="{{ old( 'title',$task->title ??'') }}">
             @error('title')
             <p class ="error-message"> {{$message}} </p>
             @enderror
@@ -31,7 +31,7 @@
                 Description
             </label>
             <textarea name="description" id="description" rows="5" >
-                {{ old( $task->description ??'description') }}
+                {{ old('description' ,$task->description ??'') }}
             </textarea>
             @error('description')
             <p class ="error-message"> {{$message}} </p>
@@ -43,7 +43,7 @@
                 Long Description
             </label>
             <textarea name="long_description" id="long_description" rows="10" >
-                {{ old( $task->long_description ??'long_description') }}
+                {{ old( 'long_description' , $task->long_description ?? '') }}
             </textarea>
             @error('long_description')
             <p class ="error-message"> {{$message}} </p>

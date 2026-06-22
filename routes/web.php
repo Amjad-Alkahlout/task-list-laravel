@@ -13,11 +13,11 @@ Route::get('/', function () {
 // we pass an array to the route
 Route::get('/tasks', function () {
     return view('index', [
-        'tasks'=>Task::all()
+        'tasks'=>Task::latest()->paginate(10)
     ]);
 })->name('tasks.index'); // calling the routes using specific names that have common prefix
 
-Route::view('/tasks/create', 'create');
+Route::view('/tasks/create', 'create')->name('tasks.create');;
 
 Route::get('/tasks/{task}', function (Task $task)  {
     return view('show', [
@@ -49,6 +49,12 @@ Route::delete('/tasks/{task}', function (Task $task) {
         ->route('tasks.index')
         ->with('message', 'Task deleted!');
 })->name('tasks.delete');
+
+Route::put('/tasks/{task}/taskToggle', function (Task $task) {
+    $task->tasktoggle();
+    return redirect()->back()->with('message', 'Task Toggled!');
+})->name('tasks.taskToggle');
+
 
 Route::fallback(function () {
     return "page not found";
