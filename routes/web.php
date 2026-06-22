@@ -43,6 +43,13 @@ Route::put('/tasks/{task}', function (Task $task , TaskRequest $request) {
         ->with('message', 'Task updated!');
 })->name('tasks.update');
 
+Route::delete('/tasks/{task}', function (Task $task) {
+    $task->delete();
+    return redirect()
+        ->route('tasks.index')
+        ->with('message', 'Task deleted!');
+})->name('tasks.delete');
+
 Route::fallback(function () {
     return "page not found";
 });
