@@ -7,7 +7,7 @@
 
         @forelse($tasks as $task)
             <div> {{-- calling the route using its name and passing parameter to it--}}
-                <a href="{{route('tasks.show', ['id' => $task->id ])}}" >{{$task->title}}</a>
+                <a href="{{route('tasks.show', ['task' => $task->id ])}}" >{{$task->title}}</a>
             </div>
         @empty
             <div>there is no task</div>
