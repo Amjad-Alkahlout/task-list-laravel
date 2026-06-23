@@ -101,7 +101,7 @@
                 class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition hover:scale-105">
                 Edit
             </a>
-
+            <div x-data="{ open: false }">
             <form
                 action="{{ route('tasks.delete', ['task' => $task]) }}"
                 method="POST">
@@ -109,12 +109,55 @@
                 @method('DELETE')
 
                 <button
-                    type="submit"
-                    onclick="return confirm('Are you sure you want to delete this task?')"
+                    type="button"
+                    @click="open=true"
                     class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition hover:scale-105">
                     Delete
                 </button>
+
+                <div
+                    x-cloak
+                    x-show="open"
+                    x-transition
+                    class="fixed inset-0 flex items-center justify-center bg-black/50">
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg w-96">
+
+                        <h2 class="text-xl font-bold mb-3">
+                            Delete Task
+                        </h2>
+
+                        <p class="text-gray-600 mb-4">
+                            Are you sure you want to delete this task?
+                        </p>
+
+                        <div class="flex justify-end gap-3">
+
+                            <button
+                                type="button"
+                                @click="open = false"
+                                class="bg-gray-300 px-4 py-2 rounded-lg">
+
+                                Cancel
+
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="bg-red-600 text-white px-4 py-2 rounded-lg">
+
+                                Delete
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
             </form>
+
+            </div>
 
         </div>
 
