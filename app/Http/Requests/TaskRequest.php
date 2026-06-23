@@ -26,6 +26,7 @@ class TaskRequest extends FormRequest
             'title' => 'required|max:255',
             'description' => 'required',
             'long_description' => 'required',
+            'due_date' => 'required|date'
         ];
     }
 }

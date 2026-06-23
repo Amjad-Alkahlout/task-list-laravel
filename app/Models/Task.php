@@ -11,8 +11,13 @@ class Task extends Model
     protected $fillable = [
         'title',
         'description',
-        'long_description'
+        'long_description',
+        'due_date',
+    ];
 
+    protected $casts = [
+        'is_completed' => 'boolean',
+        'due_date' => 'datetime',
     ];
 
     public function tasktoggle(){

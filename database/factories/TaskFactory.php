@@ -23,6 +23,7 @@ class TaskFactory extends Factory
             'description' => fake()->paragraph,
             'long_description' => fake()->paragraph(7,true),
             'is_completed' => fake()->boolean,
+            'due_date' => fake()->date,
         ];
     }
 }
