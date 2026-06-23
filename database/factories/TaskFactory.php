@@ -15,15 +15,28 @@ class TaskFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
     public function definition(): array
     {
         return [
+            'title' => fake()->randomElement([
+                'Complete Laravel Project',
+                'Study Database Systems',
+                'Prepare for Final Exam',
+                'Learn Alpine.js',
+                'Review PHP Notes',
+                'Finish Assignment',
+                'Practice Tailwind CSS',
+                'Read Laravel Documentation',
+            ]),
 
-            'title' => fake()->sentence,
-            'description' => fake()->paragraph,
-            'long_description' => fake()->paragraph(7,true),
-            'is_completed' => fake()->boolean,
-            'due_date' => fake()->date,
+            'description' => fake()->sentence(),
+
+            'long_description' => fake()->paragraphs(5, true),
+
+            'is_completed' => fake()->boolean(),
+
+            'due_date' => fake()->dateTimeBetween('-30 days', '+30 days'),
         ];
     }
 }
